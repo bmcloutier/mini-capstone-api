@@ -8,4 +8,14 @@ class ProductsController < ApplicationController
     @product = Product.first
     render template: "products/show"
   end
+
+  def widget_method
+    @product = Product.find_by(name: "Widget")
+    render template: "products/show"
+  end
+
+  def desk_method
+    @product = Product.find_by(name: "Desk")
+    render template: "products/show"
+  end
 end

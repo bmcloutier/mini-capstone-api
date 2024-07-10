@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   get "/all_products", controller: "products", action: "all_products_method"
-  get "/single_product", controller: "products", action: "single_product_method"
+  get "/single_product/:id", controller: "products", action: "single_product_method"
   get "/widget", controller: "products", action: "widget_method"
   get "/desk", controller: "products", action: "desk_method"
 end

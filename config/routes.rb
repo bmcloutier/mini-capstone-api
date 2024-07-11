@@ -8,8 +8,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  get "/all_products", controller: "products", action: "all_products_method"
-  get "/single_product/:id", controller: "products", action: "single_product_method"
-  get "/widget", controller: "products", action: "widget_method"
-  get "/desk", controller: "products", action: "desk_method"
+  # get "/products", controller: "products", action: "index"
+  get "/products" => "products#index" # Shortcut of above line
+  get "/products/:id" => "products#show"
 end

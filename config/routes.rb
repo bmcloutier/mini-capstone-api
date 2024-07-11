@@ -10,5 +10,6 @@ Rails.application.routes.draw do
 
   # get "/products", controller: "products", action: "index"
   get "/products" => "products#index" # Shortcut of above line
+  post "/products" => "products#create"
   get "/products/:id" => "products#show"
 end

@@ -17,8 +17,25 @@
 # product = Product.create(name: "Chair", price: 35, description: "Sit at your desk in comfort!")
 # product.save
 
-supplier = Supplier.create(name: "Acme", email: "info@acme.com", phone_number: "123-456-7890")
-supplier.save
+# supplier = Supplier.create(name: "Acme", email: "info@acme.com", phone_number: "123-456-7890")
+# supplier.save
 
-supplier = Supplier.create(name: "Beta", email: "info@beta.net", phone_number: "234-567-8901")
-supplier.save
+# supplier = Supplier.create(name: "Beta", email: "info@beta.net", phone_number: "234-567-8901")
+# supplier.save
+
+image = Image.create(url: "https://openclipart.org/image/800px/181902")
+image.save
+image = Image.create(url: "https://openclipart.org/image/800px/293593")
+image.save
+
+image = Image.create(url: "https://openclipart.org/image/800px/58447")
+image.save
+
+image = Image.create(url: "https://openclipart.org/image/800px/265857")
+image.save
+
+image = Image.create(url: "https://openclipart.org/image/800px/282844")
+image.save
+
+image = Image.create(url: "https://openclipart.org/image/800px/29006")
+image.save

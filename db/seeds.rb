@@ -8,13 +8,13 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-# product = Product.create(name: "Widget", price: 5, image_url: "images/widget.jpg", description: "The world's best thingy!")
+# product = Product.create(name: "Widget", price: 5, description: "The world's best thingy!")
 # product.save
 
-# product = Product.create(name: "Desk", price: 60, image_url: "images/desk.jpg", description: "A place to set your favorite widget!")
+# product = Product.create(name: "Desk", price: 60, description: "A place to set your favorite widget!")
 # product.save
 
-# product = Product.create(name: "Chair", price: 35, image_url: "images/chair.jpg", description: "Sit at your desk in comfort!")
+# product = Product.create(name: "Chair", price: 35, description: "Sit at your desk in comfort!")
 # product.save
 
 supplier = Supplier.create(name: "Acme", email: "info@acme.com", phone_number: "123-456-7890")

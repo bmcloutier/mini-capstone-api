@@ -9,9 +9,9 @@ class SuppliersControllerTest < ActionDispatch::IntegrationTest
     assert_equal Supplier.count, data.length
   end
 
-  # test "create" do
-  #   assert_difference "Supplier.count", 1 do
-  #     post "/suppliers.json", params: { name: "test supplier", email: "test@example.com", phone_number: "345-678-9012" }
-  #   end
-  # end
+  test "create" do
+    assert_difference "Supplier.count", 1 do
+      post "/suppliers.json", params: { name: "test supplier", email: "test@example.com", phone_number: "345-678-9012" }
+    end
+  end
 end

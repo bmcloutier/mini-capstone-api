@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  post "/users" => "users#create"
+  post "/sessions" => "sessions#create"
 
   # get "/products", controller: "products", action: "index"
   get "/products" => "products#index" # Shortcut of above line

@@ -6,6 +6,7 @@ class Product < ApplicationRecord
   validates :description, length: { in: 2..500 }
 
   has_many :images
+  has_many :orders
   belongs_to :supplier #Shortcut for below method
   # def supplier
   #   Supplier.find_by(id: supplier_id)

@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
         tax: tax,
         total: total,
       )
-      render json: { message: "created successfully" }
+      render :show
     else
       render json: { message: "You can't create orders if not logged in!" }
     end

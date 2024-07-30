@@ -10,4 +10,14 @@ class OrdersController < ApplicationController
     )
     render json: { message: "created successfully" }
   end
+
+  def index
+    @orders = Order.all
+    render :index
+  end
+
+  def show
+    @order = Order.find_by(id: params[:id])
+    render :show
+  end
 end

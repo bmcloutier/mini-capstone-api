@@ -21,4 +21,6 @@ Rails.application.routes.draw do
   get "/images" => "images#index"
 
   post "/orders" => "orders#create"
+  get "/orders" => "orders#index"
+  get "/orders/:id" => "orders#show"
 end

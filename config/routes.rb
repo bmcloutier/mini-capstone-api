@@ -19,4 +19,6 @@ Rails.application.routes.draw do
   get "/suppliers" => "suppliers#index"
   post "/suppliers" => "suppliers#create"
   get "/images" => "images#index"
+
+  post "/orders" => "orders#create"
 end

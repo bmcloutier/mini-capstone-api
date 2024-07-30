@@ -1,13 +1,17 @@
 class OrdersController < ApplicationController
   def create
     if current_user != nil
+      @product = Product.find_by(id: params[:product_id])
+      subtotal = @product.price * params[:quantity].to_f
+      tax = subtotal * 0.085
+      total = subtotal + tax
       @order = Order.create(
         user_id: current_user.id,
         product_id: params[:product_id],
         quantity: params[:quantity],
-        subtotal: params[:subtotal],
-        tax: params[:tax],
-        total: params[:total],
+        subtotal: subtotal,
+        tax: tax,
+        total: total,
       )
       render json: { message: "created successfully" }
     else

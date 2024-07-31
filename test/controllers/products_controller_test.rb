@@ -1,6 +1,13 @@
 require "test_helper"
 
 class ProductsControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    @user = User.create(name: "Test", email: "[test@test.com](mailto:test@test.com)", password: "password", admin: true)
+    post "/sessions.json", params: { email: "[test@test.com](mailto:test@test.com)", password: "password" }
+    data = JSON.parse(response.body)
+    @jwt = data["jwt"]
+  end
+
   test "index" do
     get "/products.json"
     assert_response 200
@@ -11,7 +18,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
   test "create" do
     assert_difference "Product.count", 1 do
-      post "/products.json", params: { name: "test product", price: 1, description: "test description", image_url: "test.jpg", supplier_id: Supplier.first.id }
+      post "/products.json", headers: { "Authorization" => "Bearer #{@jwt}" }, params: { name: "test product", price: 1, description: "test description", image_url: "test.jpg", supplier_id: Supplier.first.id }
     end
   end
 
@@ -25,7 +32,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
   test "update" do
     product = Product.first
-    patch "/products/#{product.id}.json", params: { name: "Updated name" }
+    patch "/products/#{product.id}.json", headers: { "Authorization" => "Bearer #{@jwt}" }, params: { name: "Updated name" }
     assert_response 200
 
     data = JSON.parse(response.body)
@@ -34,7 +41,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
   test "destroy" do
     assert_difference "Product.count", -1 do
-      delete "/products/#{Product.first.id}.json"
+      delete "/products/#{Product.first.id}.json", headers: { "Authorization" => "Bearer #{@jwt}" }
       assert_response 200
     end
   end

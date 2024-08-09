@@ -8,34 +8,29 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-# product = Product.create(name: "Widget", price: 5, description: "The world's best thingy!")
-# product.save
+User.create!(name: "Test", email: "test@example.com", password: "password", admin: true)
 
-# product = Product.create(name: "Desk", price: 60, description: "A place to set your favorite widget!")
-# product.save
+Supplier.create!(name: "Acme", email: "info@acme.com", phone_number: "123-456-7890")
+Supplier.create!(name: "Beta", email: "info@beta.net", phone_number: "234-567-8901")
 
-# product = Product.create(name: "Chair", price: 35, description: "Sit at your desk in comfort!")
-# product.save
+Product.create!(name: "Widget", price: 5, description: "The world's best thingy!", supplier_id: 1)
+Product.create!(name: "Desk", price: 60, description: "A place to set your favorite widget!", supplier_id: 1)
+Product.create!(name: "Chair", price: 35, description: "Sit at your desk in comfort!", supplier_id: 2)
 
-# supplier = Supplier.create(name: "Acme", email: "info@acme.com", phone_number: "123-456-7890")
-# supplier.save
+Image.create!(url: "https://openclipart.org/image/800px/181902", product_id: 1)
+Image.create!(url: "https://openclipart.org/image/800px/293593", product_id: 1)
+Image.create!(url: "https://openclipart.org/image/800px/58447", product_id: 2)
+Image.create!(url: "https://openclipart.org/image/800px/265857", product_id: 3)
 
-# supplier = Supplier.create(name: "Beta", email: "info@beta.net", phone_number: "234-567-8901")
-# supplier.save
+Category.create!(name: "Office")
+Category.create!(name: "Kitchen")
+Category.create!(name: "Bedroom")
+Category.create!(name: "Bathroom")
+Category.create!(name: "Dining")
 
-image = Image.create(url: "https://openclipart.org/image/800px/181902")
-image.save
-image = Image.create(url: "https://openclipart.org/image/800px/293593")
-image.save
-
-image = Image.create(url: "https://openclipart.org/image/800px/58447")
-image.save
-
-image = Image.create(url: "https://openclipart.org/image/800px/265857")
-image.save
-
-image = Image.create(url: "https://openclipart.org/image/800px/282844")
-image.save
-
-image = Image.create(url: "https://openclipart.org/image/800px/29006")
-image.save
+CategoryProduct.create!(category_id: 1, product_id: 1)
+CategoryProduct.create!(category_id: 2, product_id: 1)
+CategoryProduct.create!(category_id: 1, product_id: 2)
+CategoryProduct.create!(category_id: 1, product_id: 3)
+CategoryProduct.create!(category_id: 3, product_id: 3)
+CategoryProduct.create!(category_id: 5, product_id: 3)

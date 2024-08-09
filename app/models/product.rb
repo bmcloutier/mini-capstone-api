@@ -7,6 +7,7 @@ class Product < ApplicationRecord
 
   has_many :images
   has_many :orders
+  has_many :category_products
   belongs_to :supplier #Shortcut for below method
   # def supplier
   #   Supplier.find_by(id: supplier_id)

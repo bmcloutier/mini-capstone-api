@@ -7,5 +7,6 @@ json.supplier product.supplier
 json.images product.images
 json.description product.description
 json.is_discounted? product.is_discounted?
+json.categories product.categories
 json.created_at product.created_at
 json.updated_at product.updated_at

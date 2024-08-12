@@ -1,6 +1,8 @@
 class CartedProductsController < ApplicationController
+  before_action :authenticate_user
+
   def index
-    @carted_products = CartedProduct.all
+    @carted_products = current_user.carted_products
     render :index
   end
 
@@ -13,7 +15,7 @@ class CartedProductsController < ApplicationController
     @carted_product = CartedProduct.create(
       quantity: params[:quantity],
       product_id: params[:product_id],
-      user_id: params[:user_id],
+      user_id: current_user.id,
       order_id: params[:order_id],
       status: params[:status],
     )
@@ -25,7 +27,7 @@ class CartedProductsController < ApplicationController
     @carted_product.update(
       quantity: params[:quantity] || @carted_product.quantity,
       product_id: params[:product_id] || @carted_product.product_id,
-      user_id: params[:user_id] || @carted_product.user_id,
+      user_id: current_user.id || @carted_product.user_id,
       order_id: params[:order_id] || @carted_product.order_id,
       status: params[:status] || @carted_product.status,
     )
@@ -34,7 +36,9 @@ class CartedProductsController < ApplicationController
 
   def destroy
     @carted_product = CartedProduct.find_by(id: params[:id])
-    @carted_product.destroy
-    render json: { message: "Carted Product Destroyed!" }
+    @carted_product.update(
+      status: "removed",
+    )
+    render json: { message: "Carted Product Destroyed, wink wink!" }
   end
 end

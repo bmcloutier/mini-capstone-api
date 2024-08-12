@@ -6,7 +6,9 @@ class Product < ApplicationRecord
   validates :description, length: { in: 2..500 }
 
   has_many :images
-  has_many :orders
+  # has_many :orders # Removed when added cart functionality
+  has_many :carted_products
+  has_many :orders, through: :carted_products
   has_many :category_products
   has_many :categories, through: :category_products
   belongs_to :supplier #Shortcut for below method

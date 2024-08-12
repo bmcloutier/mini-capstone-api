@@ -34,3 +34,8 @@ CategoryProduct.create!(category_id: 1, product_id: 2)
 CategoryProduct.create!(category_id: 1, product_id: 3)
 CategoryProduct.create!(category_id: 3, product_id: 3)
 CategoryProduct.create!(category_id: 5, product_id: 3)
+
+Order.create!(user_id: 1, subtotal: 10, tax: 1, total: 11)
+
+CartedProduct.create!(quantity: 5, product_id: 1, user_id: 1, order_id: 1, status: "purchased")
+CartedProduct.create!(quantity: 2, product_id: 3, user_id: 1, status: "carted")

@@ -35,7 +35,7 @@ class CartedProductsController < ApplicationController
   end
 
   def destroy
-    @carted_product = CartedProduct.find_by(id: params[:id])
+    @carted_product = CartedProduct.find_by(id: params[:id], user_id: current_user.id)
     @carted_product.update(
       status: "removed",
     )

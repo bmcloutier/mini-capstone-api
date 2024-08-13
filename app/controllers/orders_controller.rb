@@ -2,12 +2,10 @@ class OrdersController < ApplicationController
   before_action :authenticate_user
 
   def create
-    @carted_products = current_user.carted_products
+    @carted_products = current_user.carted_products.where(status: "carted")
     subtotal = 0
     @carted_products.each { |item|
-      if item.status == "carted"
-        subtotal += item.product.price * item.quantity
-      end
+      subtotal += item.product.price * item.quantity
     }
     tax = subtotal * 0.085
     total = subtotal + tax
@@ -18,12 +16,10 @@ class OrdersController < ApplicationController
       total: total,
     )
     @carted_products.each { |item|
-      if item.status == "carted"
-        item.update(
-          order_id: @order.id,
-          status: "purchased",
-        )
-      end
+      item.update(
+        order_id: @order.id,
+        status: "purchased",
+      )
     }
     render :show
   end

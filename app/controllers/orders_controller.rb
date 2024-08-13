@@ -15,12 +15,15 @@ class OrdersController < ApplicationController
       tax: tax,
       total: total,
     )
-    @carted_products.each { |item|
-      item.update(
-        order_id: @order.id,
-        status: "purchased",
-      )
-    }
+    # Faster way of updating all without a loop as commented below
+    @carted_products.update_all(order_id: @order.id,
+                                status: "purchased")
+    # @carted_products.each { |item|
+    #   item.update(
+    #     order_id: @order.id,
+    #     status: "purchased",
+    #   )
+    # }
     render :show
   end
 

@@ -17,7 +17,7 @@ class CartedProductsController < ApplicationController
       product_id: params[:product_id],
       user_id: current_user.id,
       order_id: params[:order_id],
-      status: params[:status],
+      status: "carted",
     )
     render :show
   end
